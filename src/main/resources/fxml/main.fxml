@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.xillen.passwordcrackergui.controllers.MainController">
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="header">
+            <children>
+                <Label text="Восстановление паролей (демо)" styleClass="title"/>
+                <Label fx:id="authorLabel" styleClass="subtitle"/>
+            </children>
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+        </HBox>
+    </top>
+    <center>
+        <GridPane hgap="10" vgap="10" styleClass="content">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="20"/>
+                <ColumnConstraints percentWidth="80"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="NEVER"/>
+            </rowConstraints>
+
+            <children>
+                <Label text="Тип цели:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="targetType" promptText="ZIP / PDF / RDP / WiFi"
+                          GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Файл/хеш:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <HBox spacing="6" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <children>
+                        <TextField fx:id="targetPath" promptText="/путь/к/файлу_или_хешу" HBox.hgrow="ALWAYS"/>
+                        <Button text="Обзор..." onAction="#onBrowseTarget"/>
+                        <Button text="Создать тестовый ZIP 1234" onAction="#onCreateTestZip"/>
+                    </children>
+                </HBox>
+
+                <Label text="Метод атаки:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="attackMethod" promptText="Словарь / Маска / Радужные таблицы"
+                          GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Профиль:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="profilePreset" promptText="Выберите профиль"
+                          onAction="#onProfileChanged" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Словарь:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <HBox spacing="6" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                    <children>
+                        <TextField fx:id="dictionaryPath" promptText="/путь/к/wordlist.txt" HBox.hgrow="ALWAYS"/>
+                        <Button text="Обзор..." onAction="#onBrowseDictionary"/>
+                    </children>
+                </HBox>
+
+                <Label text="Маска:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="maskPattern" promptText="?l?l?d?d..."
+                           GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                <Label text="Радужная таблица:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <TextField fx:id="rainbowTablePath" promptText="/путь/к/таблице"
+                           GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                <Label text="Telegram Token:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <HBox spacing="6" GridPane.rowIndex="7" GridPane.columnIndex="1">
+                    <children>
+                        <TextField fx:id="telegramTokenField" promptText="123456:ABC-DEF..." HBox.hgrow="ALWAYS"/>
+                        <Button text="Сохранить" onAction="#onSaveTelegram"/>
+                    </children>
+                </HBox>
+
+                <Label text="Telegram Chat ID:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+                <TextField fx:id="telegramChatIdField" promptText="123456789" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+            </children>
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <VBox spacing="8" styleClass="bottom">
+            <children>
+                <HBox spacing="10">
+                    <children>
+                        <Button fx:id="startBtn" text="Начать" onAction="#onStart"/>
+                        <Button fx:id="stopBtn" text="Стоп" onAction="#onStop" disable="true"/>
+                        <ProgressBar fx:id="progressBar" prefWidth="300"/>
+                        <Label fx:id="progressLabel" text="0%"/>
+                        <Button text="Руководство" onAction="#onHelp"/>
+                        <Button text="Открыть отчёты" onAction="#onOpenReports"/>
+                        <Button text="Тест Telegram" onAction="#onTestTelegram"/>
+                    </children>
+                </HBox>
+                <TextArea fx:id="logArea" prefRowCount="8" wrapText="true" editable="false" promptText="Здесь будут выводиться шаги и статус атаки..."/>
+            </children>
+            <padding><Insets top="8" right="12" bottom="12" left="12"/></padding>
+        </VBox>
+    </bottom>
+</BorderPane>

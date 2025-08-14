@@ -1,0 +1,45 @@
+/* Dark Theme - Larger, cleaner UI */
+.root {
+    -fx-base: #121212;
+    -fx-background: #121212;
+    -fx-control-inner-background: #1e1e1e;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 15px; /* base font size */
+}
+
+.label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 15px;
+}
+
+.text-field, .combo-box, .text-area {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #e0e0e0;
+    -fx-border-color: #2a2a2a;
+    -fx-padding: 8 10 8 10;
+}
+
+.text-area {
+    -fx-font-family: "JetBrains Mono", "Consolas", monospace;
+    -fx-font-size: 13px;
+}
+
+.button {
+    -fx-background-color: #2c2c2c;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-weight: 600;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 6;
+}
+.button:hover { -fx-background-color: #3a3a3a; }
+
+.header { -fx-background-color: #1a1a1a; }
+.title { -fx-font-size: 22px; -fx-font-weight: 800; }
+.subtitle { -fx-opacity: 0.85; -fx-font-size: 13px; }
+
+.bottom { -fx-background-color: #1a1a1a; }
+.content { -fx-padding: 14; }
+
+.progress-bar {
+    -fx-pref-height: 14px;
+}
